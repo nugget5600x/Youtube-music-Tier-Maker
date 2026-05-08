@@ -21,7 +21,6 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow:hidden}
 
-/* ── SETUP ── */
 #setup{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:50;padding:24px}
 .setup-box{background:var(--bg2);border:1px solid var(--border2);border-radius:18px;padding:40px;width:100%;max-width:520px}
 .setup-logo{display:flex;align-items:center;gap:12px;margin-bottom:28px}
@@ -41,14 +40,12 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .btn-main:active{transform:scale(.98)}
 #setup-err{background:rgba(255,60,60,.1);border:1px solid rgba(255,60,60,.25);border-radius:8px;padding:11px 14px;font-size:13px;color:#ff9999;margin-top:14px;display:none}
 
-/* ── LOADING ── */
 #loading{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:100}
 .spin{width:34px;height:34px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .75s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 #load-txt{font-size:13px;color:var(--text2)}
 
-/* ── APP ── */
-#app{display:none;height:100vh;flex-direction:column}
+#app{display:none;height:100vh;flex-direction:column;overflow:hidden}
 .topbar{padding:14px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-shrink:0}
 .tbar-logo{display:flex;align-items:center;gap:8px}
 .tbar-logo .icon{width:26px;height:26px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center}
@@ -59,9 +56,8 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .tbtn:hover{color:var(--text);background:var(--bg4)}
 .new-tag{background:var(--accent);color:white;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
 
-.body{display:grid;grid-template-columns:1fr 320px;flex:1;overflow:hidden}
+.body{display:grid;grid-template-columns:1fr 320px;flex:1;min-height:0;overflow:hidden}
 
-/* ── TIER AREA ── */
 .tier-area{overflow-y:auto;padding:20px 20px 20px 24px;display:flex;flex-direction:column;gap:4px}
 .tier-row{display:flex;border-radius:9px;border:1px solid var(--border);height:96px;flex-shrink:0}
 .tier-lbl{width:58px;min-width:58px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;cursor:pointer;user-select:none;transition:filter .15s;letter-spacing:-1px;border-radius:7px 0 0 7px;flex-shrink:0}
@@ -73,14 +69,12 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .tier-zone::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.3)}
 .tier-zone.over{background:rgba(255,255,255,.07)}
 
-/* unranked */
 .unranked-wrap{margin-top:16px}
 .unranked-hdr{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px}
 .unranked-zone{display:flex;flex-wrap:wrap;gap:5px;padding:10px;background:var(--bg2);border:1px solid var(--border);border-radius:9px;min-height:74px;transition:background .12s}
 .unranked-zone.over{background:rgba(255,255,255,.07)}
 .empty-msg{font-size:12px;color:var(--text3);padding:8px;width:100%}
 
-/* song card */
 .card{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:grab;flex-shrink:0;width:62px}
 .card:active{cursor:grabbing}
 .card-img{width:62px;height:62px;border-radius:7px;overflow:hidden;position:relative;border:2px solid transparent;transition:transform .12s,border-color .12s;flex-shrink:0}
@@ -93,10 +87,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .card.playing .card-img::after{content:'';position:absolute;bottom:2px;left:2px;right:2px;height:2px;background:var(--accent);border-radius:1px}
 .card-name{font-size:8px;color:var(--text2);text-align:center;width:62px;line-height:1.3;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 
-/* ── SIDEBAR ── */
 .sidebar{border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;background:var(--bg)}
-
-/* player */
 .player{padding:16px;border-bottom:1px solid var(--border);flex-shrink:0}
 .player-frame{width:100%;aspect-ratio:16/9;border-radius:9px;overflow:hidden;background:var(--bg3);position:relative;margin-bottom:12px}
 .player-frame iframe{width:100%;height:100%;border:none;display:block}
@@ -104,21 +95,15 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .player-ph svg{width:28px;height:28px;opacity:.3}
 .p-title{font-size:13px;font-weight:600;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
 .p-artist{font-size:11px;color:var(--text2);margin-bottom:10px}
-
-/* audio player */
 .audio-wrap{margin-bottom:10px;display:none}
 .audio-wrap audio{width:100%;height:30px;outline:none;border-radius:6px}
-
-.p-actions{display:flex;gap:7px}
+.p-actions{display:flex;gap:7px;flex-wrap:wrap}
 .p-btn{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:6px 11px;font-size:11px;color:var(--text2);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
 .p-btn:hover{color:var(--text);background:var(--bg4)}
 .p-btn.yt{background:rgba(255,40,40,.1);border-color:rgba(255,40,40,.2);color:#ff8888}
 .p-btn.yt:hover{background:rgba(255,40,40,.18)}
 .p-btn.audio-btn{background:rgba(80,180,100,.1);border-color:rgba(80,180,100,.2);color:#88dd99}
-.p-btn.audio-btn:hover{background:rgba(80,180,100,.18)}
-.p-btn.audio-btn.loading{opacity:.6;pointer-events:none}
 
-/* playlist panel */
 .pl-panel{flex:1;overflow-y:auto;display:flex;flex-direction:column}
 .pl-hdr{position:sticky;top:0;background:var(--bg);padding:12px 16px 8px;border-bottom:1px solid var(--border);z-index:5;flex-shrink:0}
 .pl-hdr-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
@@ -138,20 +123,16 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .tier-badge{font-size:9px;font-weight:800;padding:2px 5px;border-radius:4px;flex-shrink:0}
 .drag-dot{color:var(--text3);font-size:14px;flex-shrink:0;cursor:grab}
 
-/* color picker */
 #cpicker{display:none;position:fixed;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:12px;z-index:200;flex-wrap:wrap;gap:7px;width:154px}
 #cpicker.open{display:flex}
 .cdot{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .12s}
 .cdot:hover{transform:scale(1.18);border-color:rgba(255,255,255,.5)}
 
-/* context menu */
 #ctx{display:none;position:fixed;background:var(--bg2);border:1px solid var(--border2);border-radius:9px;padding:5px;z-index:300;min-width:150px}
 #ctx.open{display:block}
 .ctx-item{padding:8px 12px;font-size:12px;cursor:pointer;border-radius:6px;transition:background .12s}
 .ctx-item:hover{background:var(--bg3)}
-.ctx-item.danger{color:#ff7777}
 
-/* scrollbar */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
@@ -159,19 +140,13 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 </head>
 <body>
 
-<!-- SETUP -->
 <div id="setup">
   <div class="setup-box">
     <div class="setup-logo">
       <div class="icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <h1>YT Tier Maker</h1>
     </div>
-    <p>YouTube Data API v3 のキーとプレイリスト URL を入力してください。<br>ティア表はブラウザに自動保存されます。</p>
-    <div class="field">
-      <label>YouTube Data API Key</label>
-      <input type="text" id="api-key" placeholder="AIzaSy..." autocomplete="off">
-      <span class="hint"><a href="https://console.cloud.google.com/apis/library/youtube.googleapis.com" target="_blank">Google Cloud Console</a> で無料取得（1日10,000リクエスト）</span>
-    </div>
+    <p>YouTube Music のプレイリスト URL を入力するだけで使えますよ。<br>ティア表はブラウザに自動保存されます。</p>
     <div class="field">
       <label>プレイリスト URL</label>
       <input type="text" id="pl-url" placeholder="https://music.youtube.com/playlist?list=PL...">
@@ -181,18 +156,11 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
   </div>
 </div>
 
-<!-- LOADING -->
-<div id="loading">
-  <div class="spin"></div>
-  <div id="load-txt">読み込み中...</div>
-</div>
+<div id="loading"><div class="spin"></div><div id="load-txt">読み込み中...</div></div>
 
-<!-- APP -->
 <div id="app">
   <div class="topbar">
-    <div class="tbar-logo">
-      <div class="icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-    </div>
+    <div class="tbar-logo"><div class="icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
     <div id="app-title">YT Tier Maker</div>
     <div class="tbar-actions">
       <span id="new-tag" class="new-tag" style="display:none">NEW</span>
@@ -203,14 +171,8 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
       <button class="tbtn" onclick="changePlaylist()">別のリスト</button>
     </div>
   </div>
-
   <div class="body">
-    <!-- TIER TABLE -->
-    <div class="tier-area" id="tier-area">
-      <!-- rendered by JS -->
-    </div>
-
-    <!-- SIDEBAR -->
+    <div class="tier-area" id="tier-area"></div>
     <div class="sidebar">
       <div class="player">
         <div class="player-frame">
@@ -220,7 +182,6 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
           </div>
           <div id="yt-embed" style="display:none;position:absolute;inset:0"></div>
         </div>
-        <!-- Audio stream player -->
         <div class="audio-wrap" id="audio-wrap">
           <audio id="audio-player" controls preload="none"></audio>
         </div>
@@ -238,12 +199,9 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
           <span id="vol-num" style="font-size:10px;color:var(--text2);min-width:28px;text-align:right">100%</span>
         </div>
       </div>
-
       <div class="pl-panel">
         <div class="pl-hdr">
-          <div class="pl-hdr-row">
-            <span id="pl-count">0曲</span>
-          </div>
+          <div class="pl-hdr-row"><span id="pl-count">0曲</span></div>
           <input class="search" type="text" placeholder="🔍 検索..." id="search" oninput="filterList()">
         </div>
         <div class="pl-list" id="pl-list"></div>
@@ -252,15 +210,14 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
   </div>
 </div>
 
-<!-- IMPORT MODAL -->
 <div id="import-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:400;align-items:center;justify-content:center;padding:20px">
   <div style="background:var(--bg2);border:1px solid var(--border2);border-radius:16px;padding:28px;width:100%;max-width:480px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
       <span style="font-size:15px;font-weight:700">📥 ティア表をインポート</span>
-      <button onclick="closeImport()" style="background:none;border:none;color:var(--text2);font-size:18px;cursor:pointer;line-height:1">✕</button>
+      <button onclick="closeImport()" style="background:none;border:none;color:var(--text2);font-size:18px;cursor:pointer">✕</button>
     </div>
-    <p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px">エクスポートしたJSONをここに貼り付けてください。<br>現在のプレイリストに含まれる曲だけが反映されます。</p>
-    <textarea id="import-ta" style="width:100%;height:160px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:12px;color:var(--text);font-size:12px;font-family:monospace;outline:none;resize:none;line-height:1.5" placeholder='{"tiers":{"SS":["videoId1"],"S":[],...},"tierColors":{"SS":"#ff2d2d",...}}'></textarea>
+    <p style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px">エクスポートしたJSONを貼り付けてください。</p>
+    <textarea id="import-ta" style="width:100%;height:160px;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:12px;color:var(--text);font-size:12px;font-family:monospace;outline:none;resize:none"></textarea>
     <div id="import-err" style="display:none;background:rgba(255,60,60,.1);border:1px solid rgba(255,60,60,.25);border-radius:7px;padding:9px 12px;font-size:12px;color:#ff9999;margin-top:10px"></div>
     <div style="display:flex;gap:8px;margin-top:14px">
       <button onclick="doImport()" style="flex:1;background:var(--accent);border:none;border-radius:8px;padding:11px;color:white;font-size:13px;font-weight:700;cursor:pointer">インポートする</button>
@@ -269,7 +226,6 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
   </div>
 </div>
 
-<!-- COLOR PICKER -->
 <div id="cpicker">
   <div class="cdot" style="background:#ff2d2d" onclick="applyColor('#ff2d2d')"></div>
   <div class="cdot" style="background:#ff6600" onclick="applyColor('#ff6600')"></div>
@@ -285,7 +241,6 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
   <div class="cdot" style="background:#2c2c2c" onclick="applyColor('#2c2c2c')"></div>
 </div>
 
-<!-- CONTEXT MENU -->
 <div id="ctx">
   <div class="ctx-item" onclick="ctxPlay()">▶ 再生</div>
   <div class="ctx-item" onclick="ctxAudio()">♪ 音声再生</div>
@@ -293,571 +248,337 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 </div>
 
 <script>
-const BASE = 'http://localhost:3456';
+const BASE = '';
 const SAVE_KEY = 'ytm_tier_v3';
+let songs={}, tiers={}, tierColors={}, playlistId='', apiKey='';
+let nowId=null, dragId=null, ctxId=null, ctxTier=null, editTier=null, audioMode=false;
+const TIER_NAMES=['SS','S','A','B','C','D','F'];
+const DEFAULT_COLORS={SS:'#ff2d2d',S:'#ff6600',A:'#ffcc00',B:'#44bb55',C:'#2288ee',D:'#9933cc',F:'#555555'};
 
-// ── STATE ──
-let songs = {};       // id -> {id, title, artist, thumbnail}
-let tiers = {};       // { SS:[], S:[], A:[], B:[], C:[], D:[], F:[] }
-let tierColors = {};
-let playlistId = '';
-let apiKey = '';
-let nowId = null;
-let dragId = null;
-let ctxId = null;
-let ctxTier = null;
-let editTier = null;
-let audioMode = false;
+function setCookie(n,v,d=365){const e=new Date(Date.now()+d*864e5).toUTCString();document.cookie=n+'='+encodeURIComponent(v)+';expires='+e+';path=/;SameSite=Lax'}
+function getCookie(n){const m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):''}
 
-const TIER_NAMES = ['SS','S','A','B','C','D','F'];
-const DEFAULT_COLORS = { SS:'#ff2d2d', S:'#ff6600', A:'#ffcc00', B:'#44bb55', C:'#2288ee', D:'#9933cc', F:'#555555' };
-
-// ── COOKIE HELPERS ──
-function setCookie(name, val, days = 365) {
-  const exp = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = name + '=' + encodeURIComponent(val) + ';expires=' + exp + ';path=/;SameSite=Lax';
+function save(){
+  localStorage.setItem(SAVE_KEY,JSON.stringify({songs,tiers,tierColors,playlistId,apiKey}));
+  if(playlistId) setCookie('ytm_plid',playlistId);
 }
-function getCookie(name) {
-  const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
-  return m ? decodeURIComponent(m[1]) : '';
-}
+function loadSave(){try{return JSON.parse(localStorage.getItem(SAVE_KEY))}catch{return null}}
+function initTiers(){const t={};TIER_NAMES.forEach(n=>t[n]=[]);return t}
+function ranked(){return new Set(Object.values(tiers).flat())}
 
-// ── PERSIST ──
-function save() {
-  localStorage.setItem(SAVE_KEY, JSON.stringify({ songs, tiers, tierColors, playlistId, apiKey }));
-  if (apiKey) setCookie('ytm_apikey', apiKey);
-  if (playlistId) setCookie('ytm_plid', playlistId);
-}
-function loadSave() {
-  try { return JSON.parse(localStorage.getItem(SAVE_KEY)); } catch { return null; }
-}
-
-// ── BOOT ──
-window.addEventListener('load', () => {
-  // クッキーから入力欄を復元
-  const savedKey = getCookie('ytm_apikey');
-  const savedPl  = getCookie('ytm_plid');
-  if (savedKey) document.getElementById('api-key').value = savedKey;
-  if (savedPl)  document.getElementById('pl-url').value = savedPl;
-
-  const s = loadSave();
-  if (s && s.playlistId && s.apiKey) {
-    songs = s.songs || {};
-    tiers = s.tiers || initTiers();
-    tierColors = s.tierColors || { ...DEFAULT_COLORS };
-    playlistId = s.playlistId;
-    apiKey = s.apiKey;
-    showApp();
-    renderAll();
-    bgRefresh();
+window.addEventListener('load',()=>{
+  const savedPl=getCookie('ytm_plid');
+  if(savedPl) document.getElementById('pl-url').value=savedPl;
+  const s=loadSave();
+  if(s&&s.playlistId){
+    songs=s.songs||{}; tiers=s.tiers||initTiers();
+    tierColors=s.tierColors||{...DEFAULT_COLORS};
+    playlistId=s.playlistId; apiKey='';
+    showApp(); renderAll(); bgRefresh();
   }
-  document.addEventListener('click', e => {
-    if (!e.target.closest('#cpicker') && !e.target.closest('.tier-lbl')) closePicker();
-    if (!e.target.closest('#ctx')) document.getElementById('ctx').classList.remove('open');
-    if (e.target === document.getElementById('import-modal')) closeImport();
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('#cpicker')&&!e.target.closest('.tier-lbl')) closePicker();
+    if(!e.target.closest('#ctx')) document.getElementById('ctx').classList.remove('open');
+    if(e.target===document.getElementById('import-modal')) closeImport();
   });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeImport();
-  });
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') closeImport()});
 });
 
-function initTiers() {
-  const t = {};
-  TIER_NAMES.forEach(n => t[n] = []);
-  return t;
+function extractId(url){try{return new URL(url).searchParams.get('list')||url.trim()}catch{return url.trim()}}
+
+async function loadPlaylist(){
+  const url=document.getElementById('pl-url').value.trim();
+  if(!url) return setErr('URL を入力してください');
+  const pid=extractId(url);
+  if(!pid) return setErr('プレイリスト ID が取得できません');
+  clearErr(); showLoad('プレイリストを取得中...');
+  try{
+    const [newSongs,title]=await fetchAll(pid);
+    playlistId=pid; songs=newSongs;
+    tiers=initTiers(); tierColors={...DEFAULT_COLORS};
+    document.getElementById('app-title').textContent=title;
+    save(); hideLoad(); showApp(); renderAll();
+  }catch(e){hideLoad();setErr(e.message)}
 }
 
-// ── LOAD PLAYLIST ──
-function extractId(url) {
-  try { return new URL(url).searchParams.get('list') || url.trim(); }
-  catch { return url.trim(); }
-}
-
-async function loadPlaylist() {
-  const key = document.getElementById('api-key').value.trim();
-  const url = document.getElementById('pl-url').value.trim();
-  if (!key) return setErr('API キーを入力してください');
-  if (!url) return setErr('URL を入力してください');
-  const pid = extractId(url);
-  if (!pid) return setErr('プレイリスト ID が取得できません');
-
-  clearErr();
-  showLoad('プレイリストを取得中...');
-
-  try {
-    const [newSongs, title] = await fetchAll(key, pid);
-    apiKey = key;
-    playlistId = pid;
-    songs = newSongs;
-    tiers = initTiers();
-    tierColors = { ...DEFAULT_COLORS };
-    document.getElementById('app-title').textContent = title;
-    save();
-    hideLoad();
-    showApp();
-    renderAll();
-  } catch(e) {
-    hideLoad();
-    setErr(e.message);
-  }
-}
-
-async function fetchAll(key, pid) {
-  let items = [];
-  let token = '';
-  let title = 'My Tier List';
-
-  // Get title
-  const tr = await fetch(`${BASE}/api/playlist-title?playlistId=${pid}&apiKey=${key}`);
-  const td = await tr.json();
-  if (td.items && td.items[0]) title = td.items[0].snippet.title;
-
-  do {
-    const r = await fetch(`${BASE}/api/playlist?playlistId=${pid}&apiKey=${key}${token ? '&pageToken='+token : ''}`);
-    const d = await r.json();
-    if (d.error) throw new Error(d.error.message);
-    for (const item of d.items) {
-      const sn = item.snippet;
-      const vid = sn.resourceId?.videoId;
-      if (!vid || sn.title === 'Deleted video' || sn.title === 'Private video') continue;
-      const th = sn.thumbnails;
-      const thumb = (th.medium || th.default || th.high || {url:''}).url;
-      items.push({ id: vid, title: sn.title, artist: sn.videoOwnerChannelTitle || '', thumbnail: thumb });
+async function fetchAll(pid){
+  let items=[],token='',title='My Tier List';
+  const tr=await fetch(`${BASE}/api/playlist-title?playlistId=${pid}`);
+  const td=await tr.json();
+  if(td.error) throw new Error(td.error.message||'API エラー');
+  if(td.items&&td.items[0]) title=td.items[0].snippet.title;
+  do{
+    const r=await fetch(`${BASE}/api/playlist?playlistId=${pid}${token?'&pageToken='+token:''}`);
+    const d=await r.json();
+    if(d.error) throw new Error(d.error.message);
+    for(const item of d.items){
+      const sn=item.snippet,vid=sn.resourceId?.videoId;
+      if(!vid||sn.title==='Deleted video'||sn.title==='Private video') continue;
+      const th=sn.thumbnails;
+      items.push({id:vid,title:sn.title,artist:sn.videoOwnerChannelTitle||'',thumbnail:(th.medium||th.default||th.high||{url:''}).url});
     }
-    token = d.nextPageToken || '';
-  } while (token);
-
-  const result = {};
-  for (const s of items) result[s.id] = s;
-  return [result, title];
+    token=d.nextPageToken||'';
+  }while(token);
+  const res={};for(const s of items)res[s.id]=s;
+  return[res,title];
 }
 
-async function refreshPlaylist() {
-  if (!apiKey || !playlistId) return;
+async function refreshPlaylist(){
+  if(!playlistId) return;
   showLoad('新しい曲を確認中...');
-  try {
-    const [newSongs] = await fetchAll(apiKey, playlistId);
-    let added = 0;
-    for (const [id, song] of Object.entries(newSongs)) {
-      if (!songs[id]) { songs[id] = song; added++; }
-    }
-    save();
-    hideLoad();
-    renderAll();
-    if (added > 0) {
-      document.getElementById('new-tag').style.display = 'inline';
-      document.getElementById('new-tag').textContent = `+${added} NEW`;
-    } else flashBtn('↺ 更新', '✓ 最新');
-  } catch(e) { hideLoad(); alert('更新失敗: ' + e.message); }
+  try{
+    const [newSongs]=await fetchAll(playlistId);
+    let added=0;
+    for(const [id,song] of Object.entries(newSongs)) if(!songs[id]){songs[id]=song;added++}
+    save(); hideLoad(); renderAll();
+    if(added>0){document.getElementById('new-tag').style.display='inline';document.getElementById('new-tag').textContent=`+${added} NEW`}
+    else flashBtn('↺ 更新','✓ 最新');
+  }catch(e){hideLoad();alert('更新失敗: '+e.message)}
 }
 
-async function bgRefresh() {
-  if (!apiKey || !playlistId) return;
-  try {
-    const [newSongs] = await fetchAll(apiKey, playlistId);
-    let added = 0;
-    for (const [id, song] of Object.entries(newSongs)) {
-      if (!songs[id]) { songs[id] = song; added++; }
-    }
-    if (added) {
-      save();
-      renderAll();
-      document.getElementById('new-tag').style.display = 'inline';
-      document.getElementById('new-tag').textContent = `+${added} NEW`;
-    }
-  } catch(e) { console.log('bg refresh:', e.message); }
+async function bgRefresh(){
+  if(!playlistId) return;
+  try{
+    const [newSongs]=await fetchAll(playlistId);
+    let added=0;
+    for(const [id,song] of Object.entries(newSongs)) if(!songs[id]){songs[id]=song;added++}
+    if(added){save();renderAll();document.getElementById('new-tag').style.display='inline';document.getElementById('new-tag').textContent=`+${added} NEW`}
+  }catch(e){console.log('bg:',e.message)}
 }
 
-// ── RENDER ──
-function renderAll() {
-  renderTiers();
-  renderList();
-  updateCount();
-}
+function renderAll(){renderTiers();renderList();updateCount()}
 
-function ranked() { return new Set(Object.values(tiers).flat()); }
-
-function renderTiers() {
-  const area = document.getElementById('tier-area');
-  area.innerHTML = '';
-
-  for (const name of TIER_NAMES) {
-    const row = document.createElement('div');
-    row.className = 'tier-row';
-
-    const lbl = document.createElement('div');
-    lbl.className = 'tier-lbl';
-    lbl.textContent = name;
-    lbl.dataset.tier = name;
-    const col = tierColors[name] || DEFAULT_COLORS[name];
-    lbl.style.background = col;
-    lbl.style.color = name === 'A' && (col === '#ffcc00' || col === '#ffd700') ? '#222' : 'white';
-    lbl.addEventListener('click', e => openPicker(e, name));
-
-    const zone = document.createElement('div');
-    zone.className = 'tier-zone';
-    zone.dataset.tier = name;
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('over'));
-    zone.addEventListener('drop', e => drop(e, name));
-
-    for (const id of tiers[name]) {
-      if (songs[id]) zone.appendChild(makeCard(songs[id]));
-    }
-
-    row.appendChild(lbl);
-    row.appendChild(zone);
-    area.appendChild(row);
+function renderTiers(){
+  const area=document.getElementById('tier-area');
+  area.innerHTML='';
+  for(const name of TIER_NAMES){
+    const row=document.createElement('div');
+    row.className='tier-row';
+    const lbl=document.createElement('div');
+    lbl.className='tier-lbl';
+    lbl.textContent=name;
+    lbl.dataset.tier=name;
+    const col=tierColors[name]||DEFAULT_COLORS[name];
+    lbl.style.background=col;
+    lbl.style.color=(name==='A'&&(col==='#ffcc00'||col==='#ffd700'))?'#222':'white';
+    lbl.addEventListener('click',e=>openPicker(e,name));
+    const zone=document.createElement('div');
+    zone.className='tier-zone';
+    zone.dataset.tier=name;
+    zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('over')});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>drop(e,name));
+    for(const id of tiers[name]) if(songs[id]) zone.appendChild(makeCard(songs[id]));
+    row.appendChild(lbl);row.appendChild(zone);area.appendChild(row);
   }
-
-  // Unranked
-  const wrap = document.createElement('div');
-  wrap.className = 'unranked-wrap';
-  wrap.innerHTML = '<div class="unranked-hdr">未ランク</div>';
-  const zone = document.createElement('div');
-  zone.className = 'unranked-zone';
-  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('over'); });
-  zone.addEventListener('dragleave', () => zone.classList.remove('over'));
-  zone.addEventListener('drop', e => drop(e, 'unranked'));
-
-  const r = ranked();
-  const unranked = Object.values(songs).filter(s => !r.has(s.id));
-  if (unranked.length === 0) {
-    zone.innerHTML = '<div class="empty-msg">🎉 全曲ランク付け済み</div>';
-  } else {
-    for (const s of unranked) zone.appendChild(makeCard(s));
-  }
-  wrap.appendChild(zone);
-  area.appendChild(wrap);
+  const wrap=document.createElement('div');
+  wrap.className='unranked-wrap';
+  wrap.innerHTML='<div class="unranked-hdr">未ランク</div>';
+  const zone=document.createElement('div');
+  zone.className='unranked-zone';
+  zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('over')});
+  zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+  zone.addEventListener('drop',e=>drop(e,'unranked'));
+  const r=ranked();
+  const unranked=Object.values(songs).filter(s=>!r.has(s.id));
+  if(unranked.length===0){zone.innerHTML='<div class="empty-msg">🎉 全曲ランク付け済み</div>'}
+  else{for(const s of unranked) zone.appendChild(makeCard(s))}
+  wrap.appendChild(zone);area.appendChild(wrap);
 }
 
-function makeCard(song) {
-  const c = document.createElement('div');
-  c.className = 'card' + (nowId === song.id ? ' playing' : '');
-  c.dataset.id = song.id;
-  c.draggable = true;
-  c.innerHTML = `<div class="card-img"><img src="${song.thumbnail}" alt="" loading="lazy"><div class="ov"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="card-name">${esc(song.title)}</div>`;
-  c.addEventListener('dragstart', e => { dragId = song.id; e.dataTransfer.setData('text/plain', song.id); setTimeout(() => c.style.opacity='.35', 0); });
-  c.addEventListener('dragend', () => c.style.opacity='1');
-  c.addEventListener('click', () => playSong(song.id));
-  c.addEventListener('contextmenu', e => openCtx(e, song.id));
+function makeCard(song){
+  const c=document.createElement('div');
+  c.className='card'+(nowId===song.id?' playing':'');
+  c.dataset.id=song.id;
+  c.draggable=true;
+  c.innerHTML=`<div class="card-img"><img src="${song.thumbnail}" alt="" loading="lazy"><div class="ov"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div><div class="card-name">${esc(song.title)}</div>`;
+  c.addEventListener('dragstart',e=>{dragId=song.id;e.dataTransfer.setData('text/plain',song.id);setTimeout(()=>c.style.opacity='.35',0)});
+  c.addEventListener('dragend',()=>c.style.opacity='1');
+  c.addEventListener('click',()=>playSong(song.id));
+  c.addEventListener('contextmenu',e=>openCtx(e,song.id));
   return c;
 }
 
-function renderList() {
-  const list = document.getElementById('pl-list');
-  const q = document.getElementById('search').value.toLowerCase();
-  const r = ranked();
-  list.innerHTML = '';
-
-  const all = Object.values(songs).filter(s =>
-    !q || s.title.toLowerCase().includes(q) || s.artist.toLowerCase().includes(q)
-  );
-  if (all.length === 0) { list.innerHTML = '<div style="padding:16px;font-size:12px;color:var(--text3)">曲がありません</div>'; return; }
-
-  for (const song of all) {
-    const isRanked = r.has(song.id);
-    const tierName = Object.entries(tiers).find(([,ids]) => ids.includes(song.id))?.[0];
-
-    const item = document.createElement('div');
-    item.className = 'pl-item' + (isRanked ? ' ranked' : '') + (nowId === song.id ? ' active' : '');
-    item.draggable = true;
-
-    const thumb = document.createElement('img');
-    thumb.className = 'pl-thumb';
-    thumb.src = song.thumbnail;
-    thumb.alt = '';
-    thumb.loading = 'lazy';
-
-    const info = document.createElement('div');
-    info.className = 'pl-info';
-    info.innerHTML = `<div class="pl-name">${esc(song.title)}</div><div class="pl-ch">${esc(song.artist)}</div>`;
-
-    item.appendChild(thumb);
-    item.appendChild(info);
-
-    if (isRanked && tierName) {
-      const badge = document.createElement('div');
-      badge.className = 'tier-badge';
-      badge.style.background = (tierColors[tierName] || '#555') + '30';
-      badge.style.color = tierColors[tierName] || '#aaa';
-      badge.textContent = tierName;
+function renderList(){
+  const list=document.getElementById('pl-list');
+  const q=document.getElementById('search').value.toLowerCase();
+  const r=ranked();
+  list.innerHTML='';
+  const all=Object.values(songs).filter(s=>!q||s.title.toLowerCase().includes(q)||s.artist.toLowerCase().includes(q));
+  if(!all.length){list.innerHTML='<div style="padding:16px;font-size:12px;color:var(--text3)">曲がありません</div>';return}
+  for(const song of all){
+    const isRanked=r.has(song.id);
+    const tierName=Object.entries(tiers).find(([,ids])=>ids.includes(song.id))?.[0];
+    const item=document.createElement('div');
+    item.className='pl-item'+(isRanked?' ranked':'')+(nowId===song.id?' active':'');
+    item.draggable=true;
+    const thumb=document.createElement('img');
+    thumb.className='pl-thumb';thumb.src=song.thumbnail;thumb.alt='';thumb.loading='lazy';
+    const info=document.createElement('div');
+    info.className='pl-info';
+    info.innerHTML=`<div class="pl-name">${esc(song.title)}</div><div class="pl-ch">${esc(song.artist)}</div>`;
+    item.appendChild(thumb);item.appendChild(info);
+    if(isRanked&&tierName){
+      const badge=document.createElement('div');
+      badge.className='tier-badge';
+      badge.style.background=(tierColors[tierName]||'#555')+'30';
+      badge.style.color=tierColors[tierName]||'#aaa';
+      badge.textContent=tierName;
       item.appendChild(badge);
     }
-
-    const dot = document.createElement('div');
-    dot.className = 'drag-dot';
-    dot.textContent = '⠿';
+    const dot=document.createElement('div');dot.className='drag-dot';dot.textContent='⠿';
     item.appendChild(dot);
-
-    item.addEventListener('click', e => { if (e.target !== dot) playSong(song.id); });
-    item.addEventListener('dragstart', e => { dragId = song.id; e.dataTransfer.setData('text/plain', song.id); });
-
+    item.addEventListener('click',e=>{if(e.target!==dot) playSong(song.id)});
+    item.addEventListener('dragstart',e=>{dragId=song.id;e.dataTransfer.setData('text/plain',song.id)});
     list.appendChild(item);
   }
 }
 
-function updateCount() {
-  const total = Object.keys(songs).length;
-  const r = ranked().size;
-  document.getElementById('pl-count').textContent = `${total}曲 ・ ${r}曲ランク済み`;
+function updateCount(){
+  const total=Object.keys(songs).length;
+  const r=ranked().size;
+  document.getElementById('pl-count').textContent=`${total}曲 ・ ${r}曲ランク済み`;
 }
+function filterList(){renderList()}
 
-function filterList() { renderList(); }
-
-// ── DRAG DROP ──
-function drop(e, targetTier) {
+function drop(e,targetTier){
   e.preventDefault();
   e.currentTarget?.classList.remove('over');
-  const id = dragId || e.dataTransfer.getData('text/plain');
-  if (!id || !songs[id]) return;
-  for (const t of TIER_NAMES) tiers[t] = tiers[t].filter(i => i !== id);
-  if (targetTier !== 'unranked') tiers[targetTier].push(id);
-  dragId = null;
-  save();
-  renderAll();
+  const id=dragId||e.dataTransfer.getData('text/plain');
+  if(!id||!songs[id]) return;
+  for(const t of TIER_NAMES) tiers[t]=tiers[t].filter(i=>i!==id);
+  if(targetTier!=='unranked') tiers[targetTier].push(id);
+  dragId=null; save(); renderAll();
 }
 
-// ── VOLUME ──
-let ytPlayer = null;
-function setVolume(val) {
-  document.getElementById('vol-num').textContent = val + '%';
-  // iframeのpostMessageで音量制御（YouTube IFrame API）
-  const iframe = document.querySelector('#yt-embed iframe');
-  if (iframe) {
-    try {
-      iframe.contentWindow.postMessage(JSON.stringify({
-        event: 'command', func: 'setVolume', args: [parseInt(val)]
-      }), '*');
-    } catch(e) {}
-  }
-  // audio要素の音量も制御
-  const audio = document.getElementById('audio-player');
-  if (audio) audio.volume = val / 100;
+function setVolume(val){
+  document.getElementById('vol-num').textContent=val+'%';
+  const iframe=document.querySelector('#yt-embed iframe');
+  if(iframe){try{iframe.contentWindow.postMessage(JSON.stringify({event:'command',func:'setVolume',args:[parseInt(val)]}),'*')}catch(e){}}
+  const audio=document.getElementById('audio-player');
+  if(audio) audio.volume=val/100;
 }
 
-// ── PLAYER ──
-function playSong(id) {
-  const song = songs[id];
-  if (!song) return;
-  nowId = id;
-  audioMode = false;
-
-  document.getElementById('player-ph').style.display = 'none';
-  const emb = document.getElementById('yt-embed');
-  emb.style.display = 'block';
-  emb.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${song.id}?autoplay=1&rel=0&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;border:none;border-radius:9px"></iframe>`;
-
-  // Hide audio
-  document.getElementById('audio-wrap').style.display = 'none';
+function playSong(id){
+  const song=songs[id];if(!song) return;
+  nowId=id; audioMode=false;
+  document.getElementById('player-ph').style.display='none';
+  const emb=document.getElementById('yt-embed');
+  emb.style.display='block';
+  emb.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${song.id}?autoplay=1&rel=0&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;border:none;border-radius:9px"></iframe>`;
+  document.getElementById('audio-wrap').style.display='none';
   document.getElementById('audio-player').pause();
-
-  document.getElementById('p-title').textContent = song.title;
-  document.getElementById('p-artist').textContent = song.artist;
-  document.getElementById('p-yt-link').href = `https://music.youtube.com/watch?v=${song.id}`;
-  document.getElementById('p-audio-btn').style.display = 'inline-flex';
-
-  document.querySelectorAll('.card').forEach(c => c.classList.toggle('playing', c.dataset.id === id));
-  document.querySelectorAll('.pl-item').forEach(c => c.classList.toggle('active', c.dataset.id === id));
+  document.getElementById('p-title').textContent=song.title;
+  document.getElementById('p-artist').textContent=song.artist;
+  document.getElementById('p-yt-link').href=`https://music.youtube.com/watch?v=${song.id}`;
+  document.getElementById('p-audio-btn').style.display='inline-flex';
+  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('playing',c.dataset.id===id));
+  document.querySelectorAll('.pl-item').forEach(c=>c.classList.toggle('active',c.dataset.id===id));
 }
 
-async function toggleAudio() {
-  if (!nowId) return;
-  const btn = document.getElementById('p-audio-btn');
-  const wrap = document.getElementById('audio-wrap');
-  const audio = document.getElementById('audio-player');
-
-  if (audioMode) {
-    // Switch back to embed
-    audioMode = false;
-    wrap.style.display = 'none';
-    audio.pause();
-    audio.src = '';
-    const song = songs[nowId];
-    const emb = document.getElementById('yt-embed');
-    emb.style.display = 'block';
-    emb.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${song.id}?autoplay=1&rel=0&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;border:none;border-radius:9px"></iframe>`;
-    btn.textContent = '♪ 音声のみ';
-    return;
+async function toggleAudio(){
+  if(!nowId) return;
+  const btn=document.getElementById('p-audio-btn');
+  const wrap=document.getElementById('audio-wrap');
+  const audio=document.getElementById('audio-player');
+  if(audioMode){
+    audioMode=false; wrap.style.display='none'; audio.pause(); audio.src='';
+    const song=songs[nowId];
+    const emb=document.getElementById('yt-embed');
+    emb.style.display='block';
+    emb.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${song.id}?autoplay=1&rel=0&enablejsapi=1" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;border:none;border-radius:9px"></iframe>`;
+    btn.textContent='♪ 音声のみ'; return;
   }
-
-  btn.classList.add('loading');
-  btn.textContent = '読み込み中...';
-  audioMode = true;
-
-  // Hide embed
-  document.getElementById('yt-embed').style.display = 'none';
-  document.getElementById('yt-embed').innerHTML = '';
-  document.getElementById('player-ph').style.display = 'flex';
-
-  const url = `${BASE}/api/audio/${nowId}`;
-  audio.src = url;
-  wrap.style.display = 'block';
-  audio.play().catch(() => {});
-
-  btn.classList.remove('loading');
-  btn.textContent = '📺 動画に戻す';
+  btn.textContent='読み込み中...'; audioMode=true;
+  document.getElementById('yt-embed').style.display='none';
+  document.getElementById('yt-embed').innerHTML='';
+  document.getElementById('player-ph').style.display='flex';
+  audio.src=`${BASE}/api/audio/${nowId}`;
+  wrap.style.display='block';
+  audio.play().catch(()=>{});
+  btn.textContent='📺 動画に戻す';
 }
 
-// ── COLOR PICKER ──
-function openPicker(e, name) {
-  e.stopPropagation();
-  editTier = name;
-  const p = document.getElementById('cpicker');
+function openPicker(e,name){
+  e.stopPropagation(); editTier=name;
+  const p=document.getElementById('cpicker');
   p.classList.add('open');
-  const r = e.target.getBoundingClientRect();
-  p.style.top = (r.bottom + 5) + 'px';
-  p.style.left = r.left + 'px';
+  const r=e.target.getBoundingClientRect();
+  p.style.top=(r.bottom+5)+'px'; p.style.left=r.left+'px';
 }
-function closePicker() { document.getElementById('cpicker').classList.remove('open'); }
-function applyColor(col) {
-  if (!editTier) return;
-  tierColors[editTier] = col;
-  closePicker();
-  save();
-  renderAll();
+function closePicker(){document.getElementById('cpicker').classList.remove('open')}
+function applyColor(col){if(!editTier) return;tierColors[editTier]=col;closePicker();save();renderAll()}
+
+function openCtx(e,id){
+  e.preventDefault(); ctxId=id;
+  ctxTier=Object.entries(tiers).find(([,ids])=>ids.includes(id))?.[0]||'unranked';
+  const m=document.getElementById('ctx');
+  m.classList.add('open'); m.style.top=e.clientY+'px'; m.style.left=e.clientX+'px';
+  document.getElementById('ctx-unrank').style.display=ctxTier==='unranked'?'none':'block';
+}
+function ctxPlay(){if(ctxId) playSong(ctxId);document.getElementById('ctx').classList.remove('open')}
+function ctxAudio(){if(ctxId){playSong(ctxId);setTimeout(toggleAudio,200)}document.getElementById('ctx').classList.remove('open')}
+function ctxUnrank(){
+  if(!ctxId) return;
+  for(const t of TIER_NAMES) tiers[t]=tiers[t].filter(i=>i!==ctxId);
+  save();renderAll();document.getElementById('ctx').classList.remove('open');
 }
 
-// ── CONTEXT MENU ──
-function openCtx(e, id) {
-  e.preventDefault();
-  ctxId = id;
-  ctxTier = Object.entries(tiers).find(([,ids]) => ids.includes(id))?.[0] || 'unranked';
-  const m = document.getElementById('ctx');
-  m.classList.add('open');
-  m.style.top = e.clientY + 'px';
-  m.style.left = e.clientX + 'px';
-  document.getElementById('ctx-unrank').style.display = ctxTier === 'unranked' ? 'none' : 'block';
-}
-function ctxPlay() { if (ctxId) playSong(ctxId); document.getElementById('ctx').classList.remove('open'); }
-function ctxAudio() {
-  if (ctxId) { playSong(ctxId); setTimeout(toggleAudio, 200); }
-  document.getElementById('ctx').classList.remove('open');
-}
-function ctxUnrank() {
-  if (!ctxId) return;
-  for (const t of TIER_NAMES) tiers[t] = tiers[t].filter(i => i !== ctxId);
-  save(); renderAll();
-  document.getElementById('ctx').classList.remove('open');
-}
-
-// ── EXPORT ──
-function exportTier() {
-  const data = { tiers, tierColors, exportedAt: new Date().toISOString(), playlistId };
-  const json = JSON.stringify(data, null, 2);
+function exportTier(){
+  const data={tiers,tierColors,exportedAt:new Date().toISOString(),playlistId};
+  const json=JSON.stringify(data,null,2);
   navigator.clipboard.writeText(json)
-    .then(() => flashBtn('📤 エクスポート', '✓ コピー済み!'))
-    .catch(() => {
-      // fallback: show in textarea modal
-      openImport();
-      document.getElementById('import-ta').value = json;
-      document.querySelector('#import-modal p').textContent = '以下のJSONをコピーして保存してください。';
-    });
+    .then(()=>flashBtn('📤 エクスポート','✓ コピー済み!'))
+    .catch(()=>{openImport();document.getElementById('import-ta').value=json});
 }
 
-// ── IMPORT ──
-function openImport() {
-  const modal = document.getElementById('import-modal');
-  modal.style.display = 'flex';
-  document.getElementById('import-ta').value = '';
-  document.getElementById('import-err').style.display = 'none';
+function openImport(){
+  document.getElementById('import-modal').style.display='flex';
+  document.getElementById('import-ta').value='';
+  document.getElementById('import-err').style.display='none';
 }
-function closeImport() {
-  document.getElementById('import-modal').style.display = 'none';
-}
-function doImport() {
-  const raw = document.getElementById('import-ta').value.trim();
-  const errEl = document.getElementById('import-err');
-  errEl.style.display = 'none';
-
-  if (!raw) { showImportErr('JSONを貼り付けてください'); return; }
-
+function closeImport(){document.getElementById('import-modal').style.display='none'}
+function doImport(){
+  const raw=document.getElementById('import-ta').value.trim();
+  const errEl=document.getElementById('import-err');
+  errEl.style.display='none';
+  if(!raw){showImportErr('JSONを貼り付けてください');return}
   let data;
-  try { data = JSON.parse(raw); }
-  catch { showImportErr('JSONの形式が正しくありません'); return; }
-
-  if (!data.tiers || typeof data.tiers !== 'object') {
-    showImportErr('"tiers" が見つかりません。エクスポートしたデータを貼り付けてください'); return;
-  }
-
-  // Merge: only accept video IDs that exist in current songs
-  let matched = 0, skipped = 0;
-  const newTiers = initTiers();
-  for (const tierName of TIER_NAMES) {
-    const ids = data.tiers[tierName] || [];
-    for (const id of ids) {
-      if (songs[id]) {
-        // Remove from other tiers first (avoid duplicates)
-        for (const t of TIER_NAMES) newTiers[t] = newTiers[t].filter(i => i !== id);
-        newTiers[tierName].push(id);
-        matched++;
-      } else {
-        skipped++;
-      }
+  try{data=JSON.parse(raw)}catch{showImportErr('JSONの形式が正しくありません');return}
+  if(!data.tiers){showImportErr('"tiers" が見つかりません');return}
+  let matched=0,skipped=0;
+  const nt=initTiers();
+  for(const tierName of TIER_NAMES){
+    for(const id of(data.tiers[tierName]||[])){
+      if(songs[id]){for(const t of TIER_NAMES)nt[t]=nt[t].filter(i=>i!==id);nt[tierName].push(id);matched++}
+      else skipped++;
     }
   }
-
-  tiers = newTiers;
-  if (data.tierColors && typeof data.tierColors === 'object') {
-    tierColors = { ...DEFAULT_COLORS, ...data.tierColors };
-  }
-
-  save();
-  renderAll();
-  closeImport();
-
-  const msg = skipped > 0
-    ? `✅ ${matched}曲をインポートしました（${skipped}曲は現在のプレイリストにないためスキップ）`
-    : `✅ ${matched}曲をインポートしました`;
-  alert(msg);
+  tiers=nt;
+  if(data.tierColors) tierColors={...DEFAULT_COLORS,...data.tierColors};
+  save();renderAll();closeImport();
+  alert(`✅ ${matched}曲インポート${skipped>0?`（${skipped}曲スキップ）`:''}`);
 }
-function showImportErr(msg) {
-  const el = document.getElementById('import-err');
-  el.style.display = 'block';
-  el.textContent = '⚠ ' + msg;
+function showImportErr(msg){const el=document.getElementById('import-err');el.style.display='block';el.textContent='⚠ '+msg}
+
+function resetTiers(){if(!confirm('リセットしますか？'))return;tiers=initTiers();tierColors={...DEFAULT_COLORS};save();renderAll()}
+function changePlaylist(){
+  if(!confirm('別のプレイリストに切り替えますか？'))return;
+  const savedPl=getCookie('ytm_plid');
+  if(savedPl) document.getElementById('pl-url').value=savedPl;
+  document.getElementById('app').style.display='none';
+  document.getElementById('setup').style.display='flex';
 }
 
-function resetTiers() {
-  if (!confirm('ティア表をリセットしますか？')) return;
-  tiers = initTiers();
-  tierColors = { ...DEFAULT_COLORS };
-  save(); renderAll();
-}
-function changePlaylist() {
-  if (!confirm('別のプレイリストに切り替えますか？')) return;
-  // セットアップ画面に戻るとき、クッキーの値を入力欄に反映
-  const savedKey = getCookie('ytm_apikey');
-  const savedPl  = getCookie('ytm_plid');
-  if (savedKey) document.getElementById('api-key').value = savedKey;
-  if (savedPl)  document.getElementById('pl-url').value = savedPl;
-  document.getElementById('app').style.display = 'none';
-  document.getElementById('setup').style.display = 'flex';
-}
-
-// ── UTILS ──
-function showApp() {
-  document.getElementById('setup').style.display = 'none';
-  document.getElementById('app').style.display = 'flex';
-}
-function showLoad(msg) { document.getElementById('loading').style.display = 'flex'; document.getElementById('load-txt').textContent = msg; }
-function hideLoad() { document.getElementById('loading').style.display = 'none'; }
-function setErr(msg) {
-  const el = document.getElementById('setup-err');
-  el.style.display = 'block';
-  el.textContent = '⚠ ' + msg;
-  hideLoad();
-}
-function clearErr() { document.getElementById('setup-err').style.display = 'none'; }
-function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function flashBtn(orig, msg) {
-  const btns = document.querySelectorAll('.tbtn');
-  for (const b of btns) {
-    if (b.textContent.includes(orig.slice(0,3))) {
-      b.textContent = msg;
-      setTimeout(() => b.textContent = orig, 2000);
-      break;
-    }
-  }
+function showApp(){document.getElementById('setup').style.display='none';document.getElementById('app').style.display='flex'}
+function showLoad(msg){document.getElementById('loading').style.display='flex';document.getElementById('load-txt').textContent=msg}
+function hideLoad(){document.getElementById('loading').style.display='none'}
+function setErr(msg){const el=document.getElementById('setup-err');el.style.display='block';el.textContent='⚠ '+msg;hideLoad()}
+function clearErr(){document.getElementById('setup-err').style.display='none'}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function flashBtn(orig,msg){
+  const btns=document.querySelectorAll('.tbtn');
+  for(const b of btns){if(b.textContent.includes(orig.slice(0,3))){b.textContent=msg;setTimeout(()=>b.textContent=orig,2000);break}}
 }
 </script>
 </body>
