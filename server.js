@@ -9,6 +9,10 @@ app.use(express.static(__dirname));
 
 const API_KEY = process.env.YOUTUBE_API_KEY || '';
 
+if (!API_KEY) {
+  console.warn('⚠️  YOUTUBE_API_KEY が設定されていません');
+}
+
 app.get('/api/playlist', async (req, res) => {
   const { playlistId, pageToken } = req.query;
   if (!playlistId) return res.status(400).json({ error: 'Missing playlistId' });
@@ -30,7 +34,9 @@ app.get('/api/playlist-title', async (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
-app.get('/api/health', (req, res) => res.json({ ok: true }));
+app.get('/api/health', (req, res) => res.json({ ok: true, hasKey: !!API_KEY }));
 
 const PORT = process.env.PORT || 3456;
-app.listen(PORT, '0.0.0.0', () => console.log(`✅ running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ YT Tier Maker running on port ${PORT}`);
+});
