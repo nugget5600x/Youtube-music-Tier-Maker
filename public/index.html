@@ -155,6 +155,82 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+
+/* ── MOBILE SWIPE MODE ── */
+#mobile-app{display:none;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;background:var(--bg)}
+#mobile-table{display:none;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;background:var(--bg)}
+#mobile-reassign{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;align-items:flex-end;justify-content:center}
+#mobile-reassign.open{display:flex}
+
+@media (max-width:767px){
+  body{overflow:hidden}
+  #app{display:none!important}
+  #mobile-app{display:flex}
+  #mobile-table.open{display:flex}
+}
+
+.m-topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border);flex-shrink:0;gap:8px}
+.m-topbar-logo{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.m-topbar-logo .icon{width:26px;height:26px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.m-topbar-logo .icon svg{width:14px;height:14px;fill:white}
+.m-topbar-logo span{font-size:14px;font-weight:700;letter-spacing:-.3px}
+.m-progress{font-size:12px;color:var(--text2);font-weight:600;text-align:center;flex:1}
+.m-tbtn{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:7px 12px;color:var(--text2);font-size:12px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+
+.m-card-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:16px 24px;min-height:0;overflow:hidden}
+.m-card{display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;max-width:320px}
+.m-art-wrap{width:min(64vw,240px);height:min(64vw,240px);border-radius:18px;overflow:hidden;background:var(--bg3);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(0,0,0,.6);flex-shrink:0;position:relative}
+.m-art-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.m-art-ph{font-size:52px;position:absolute}
+.m-song-title{font-size:17px;font-weight:700;text-align:center;line-height:1.3;width:100%;padding:0 8px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.m-song-artist{font-size:13px;color:var(--text2);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;padding:0 8px}
+.m-play-row{display:flex;gap:8px;margin-top:2px}
+.m-play-btn{background:rgba(255,255,255,.08);border:1px solid var(--border2);border-radius:20px;padding:7px 18px;color:var(--text2);font-size:12px;cursor:pointer;transition:background .15s}
+.m-play-btn:active{background:rgba(255,255,255,.15)}
+.m-audio-wrap{padding:0 16px 8px;flex-shrink:0}
+.m-audio-wrap audio{width:100%;height:32px;border-radius:6px;outline:none}
+
+.m-tier-area{padding:10px 16px 20px;flex-shrink:0;border-top:1px solid var(--border)}
+.m-tier-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;text-align:center}
+.m-tier-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:10px}
+.m-tier-btn{flex:1;min-width:52px;max-width:72px;padding:13px 6px;border:none;border-radius:12px;font-size:20px;font-weight:900;color:white;cursor:pointer;transition:transform .12s,box-shadow .12s;letter-spacing:-1px;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+.m-tier-btn:active{transform:scale(.9);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.m-skip-btn{width:100%;background:transparent;border:1px solid var(--border2);border-radius:8px;padding:9px;color:var(--text3);font-size:13px;cursor:pointer;transition:background .15s}
+.m-skip-btn:active{background:var(--bg3)}
+
+.m-done{display:flex;flex-direction:column;align-items:center;gap:14px;padding:32px 16px;text-align:center;flex:1;justify-content:center}
+.m-done .emoji{font-size:52px}
+.m-done h2{font-size:20px;font-weight:700}
+.m-done p{font-size:13px;color:var(--text2);line-height:1.6}
+.m-done-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+
+.m-more-row{display:flex;gap:6px;padding:0 16px 12px;flex-shrink:0;overflow-x:auto}
+.m-more-row::-webkit-scrollbar{display:none}
+.m-more-btn{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text3);font-size:11px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+
+/* Mobile table */
+.m-table-topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border);flex-shrink:0}
+.m-table-topbar button{background:none;border:none;color:var(--accent);font-size:14px;cursor:pointer;padding:4px 0}
+.m-table-topbar span{font-size:14px;font-weight:600}
+.m-table-content{flex:1;overflow-y:auto;padding:10px 12px 20px}
+.m-tier-section{margin-bottom:14px}
+.m-tier-section-hdr{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.m-tier-lbl{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:white;flex-shrink:0}
+.m-tier-count{font-size:11px;color:var(--text3)}
+.m-tier-songs{display:flex;flex-wrap:wrap;gap:5px;padding:7px;background:var(--bg2);border-radius:8px;min-height:50px}
+.m-song-chip{display:flex;align-items:center;gap:5px;background:var(--bg3);border-radius:6px;padding:4px 8px 4px 4px;cursor:pointer;max-width:160px}
+.m-song-chip img{width:28px;height:28px;border-radius:4px;object-fit:cover;flex-shrink:0}
+.m-chip-name{font-size:11px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;flex:1;min-width:0}
+.m-chip-x{color:var(--text3);font-size:13px;flex-shrink:0;padding:0 2px}
+.m-unranked-note{font-size:11px;color:var(--text3);padding:5px 8px}
+
+/* Reassign sheet */
+.m-reassign-sheet{background:var(--bg2);border-radius:20px 20px 0 0;padding:20px 16px 32px;width:100%;max-width:480px}
+.m-reassign-title{font-size:13px;font-weight:600;margin-bottom:4px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-reassign-sub{font-size:11px;color:var(--text2);text-align:center;margin-bottom:16px}
+.m-reassign-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:12px}
+.m-reassign-btn{flex:1;min-width:52px;max-width:72px;padding:12px 6px;border:none;border-radius:10px;font-size:18px;font-weight:900;color:white;cursor:pointer}
+.m-reassign-cancel{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:11px;color:var(--text2);font-size:13px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -266,6 +342,70 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
       <button onclick="doImport()" style="flex:1;background:var(--accent);border:none;border-radius:8px;padding:11px;color:white;font-size:13px;font-weight:700;cursor:pointer">インポートする</button>
       <button onclick="closeImport()" style="background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:11px 18px;color:var(--text2);font-size:13px;cursor:pointer">キャンセル</button>
     </div>
+  </div>
+</div>
+
+<!-- MOBILE APP -->
+<div id="mobile-app">
+  <div class="m-topbar">
+    <div class="m-topbar-logo">
+      <div class="icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <span>YT Tier</span>
+    </div>
+    <span id="m-progress" class="m-progress"></span>
+    <button class="m-tbtn" onclick="showMobileTable()">ティア表 →</button>
+  </div>
+
+  <div class="m-card-wrap" id="m-card-wrap">
+    <div class="m-card" id="m-card">
+      <div class="m-art-wrap">
+        <div class="m-art-ph" id="m-art-ph">🎵</div>
+        <img id="m-art" src="" alt="" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      </div>
+      <div id="m-song-title" class="m-song-title">—</div>
+      <div id="m-song-artist" class="m-song-artist"></div>
+      <div class="m-play-row">
+        <button class="m-play-btn" id="m-play-btn" onclick="mPlayCurrent()">▶ 再生</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-audio-wrap" id="m-audio-wrap" style="display:none">
+    <audio id="m-audio" controls preload="none"></audio>
+  </div>
+
+  <div class="m-tier-area" id="m-tier-area">
+    <div class="m-tier-label">ティアを選択</div>
+    <div class="m-tier-btns" id="m-tier-btns"></div>
+    <button class="m-skip-btn" onclick="mSkip()">スキップ →</button>
+  </div>
+
+  <div class="m-more-row">
+    <button class="m-more-btn" onclick="refreshPlaylist()">↺ 更新</button>
+    <button class="m-more-btn" onclick="exportTier()">📤 エクスポート</button>
+    <button class="m-more-btn" onclick="openImport()">📥 インポート</button>
+    <button class="m-more-btn" onclick="resetTiers()">リセット</button>
+    <button class="m-more-btn" onclick="changePlaylist()">別のリスト</button>
+  </div>
+</div>
+
+<!-- MOBILE TIER TABLE -->
+<div id="mobile-table">
+  <div class="m-table-topbar">
+    <button onclick="hideMobileTable()">← 戻る</button>
+    <span>ティア表</span>
+    <span id="m-table-count" style="font-size:12px;color:var(--text2)"></span>
+  </div>
+  <div class="m-table-content" id="m-table-content"></div>
+</div>
+
+<!-- MOBILE REASSIGN SHEET -->
+<div id="mobile-reassign">
+  <div class="m-reassign-sheet">
+    <div class="m-reassign-title" id="m-reassign-title"></div>
+    <div class="m-reassign-sub">ティアを変更</div>
+    <div class="m-reassign-btns" id="m-reassign-btns"></div>
+    <button class="m-reassign-cancel" onclick="closeMobileReassign()">キャンセル</button>
   </div>
 </div>
 
@@ -473,6 +613,8 @@ function renderAll() {
   renderTiers();
   renderList();
   updateCount();
+  mUpdateCard();
+  renderMobileTierBtns();
 }
 
 function ranked() { return new Set(Object.values(tiers).flat()); }
@@ -821,23 +963,256 @@ function resetTiers() {
   if (!confirm('ティア表をリセットしますか？')) return;
   tiers = initTiers();
   tierColors = { ...DEFAULT_COLORS };
+  mIdx = 0;
   save(); renderAll();
 }
 function changePlaylist() {
   if (!confirm('別のプレイリストに切り替えますか？')) return;
-  // セットアップ画面に戻るとき、クッキーの値を入力欄に反映
   const savedKey = getCookie('ytm_apikey');
   const savedPl  = getCookie('ytm_plid');
   if (savedKey) document.getElementById('api-key').value = savedKey;
   if (savedPl)  document.getElementById('pl-url').value = savedPl;
   document.getElementById('app').style.display = 'none';
+  document.getElementById('mobile-app').style.display = 'none';
   document.getElementById('setup').style.display = 'flex';
 }
+
+// ── MOBILE MODE ──
+let mIdx = 0;
+let mUnranked = [];
+let mReassignId = null;
+
+function mRebuildUnranked() {
+  const r = ranked();
+  const all = Object.values(songs);
+  // keep current order: unranked first in original playlist order
+  mUnranked = all.filter(s => !r.has(s.id));
+}
+
+function renderMobileTierBtns() {
+  const container = document.getElementById('m-tier-btns');
+  if (!container) return;
+  container.innerHTML = '';
+  for (const name of TIER_NAMES) {
+    const btn = document.createElement('button');
+    btn.className = 'm-tier-btn';
+    btn.textContent = name;
+    const col = tierColors[name] || DEFAULT_COLORS[name];
+    btn.style.background = col;
+    btn.style.color = (col === '#ffcc00' || col === '#ffd700') ? '#222' : 'white';
+    btn.addEventListener('click', () => mAssign(name));
+    container.appendChild(btn);
+  }
+}
+
+function mUpdateCard() {
+  mRebuildUnranked();
+  const total = Object.keys(songs).length;
+  const r = ranked().size;
+  const prog = document.getElementById('m-progress');
+  if (prog) prog.textContent = `${r} / ${total} ランク済み`;
+
+  const tierArea = document.getElementById('m-tier-area');
+  const cardWrap = document.getElementById('m-card-wrap');
+  if (!tierArea || !cardWrap) return;
+
+  if (mUnranked.length === 0 && total > 0) {
+    cardWrap.innerHTML = `<div class="m-done"><div class="emoji">🎉</div><h2>全曲ランク付け完了！</h2><p>${total}曲すべてにティアが付きました</p><div class="m-done-btns"><button class="m-tbtn" onclick="showMobileTable()">ティア表を見る →</button></div></div>`;
+    tierArea.style.display = 'none';
+    return;
+  }
+
+  // restore card if it was replaced with done screen
+  if (!document.getElementById('m-card')) {
+    cardWrap.innerHTML = `<div class="m-card" id="m-card"><div class="m-art-wrap"><div class="m-art-ph" id="m-art-ph">🎵</div><img id="m-art" src="" alt="" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div><div id="m-song-title" class="m-song-title">—</div><div id="m-song-artist" class="m-song-artist"></div><div class="m-play-row"><button class="m-play-btn" id="m-play-btn" onclick="mPlayCurrent()">▶ 再生</button></div></div>`;
+  }
+  tierArea.style.display = '';
+
+  if (mIdx >= mUnranked.length) mIdx = 0;
+  const song = mUnranked[mIdx];
+  if (!song) return;
+
+  const art = document.getElementById('m-art');
+  const ph = document.getElementById('m-art-ph');
+  if (art && song.thumbnail) {
+    art.src = song.thumbnail;
+    art.style.display = 'block';
+    if (ph) ph.style.display = 'none';
+  } else if (art) {
+    art.style.display = 'none';
+    if (ph) ph.style.display = '';
+  }
+
+  const titleEl = document.getElementById('m-song-title');
+  const artistEl = document.getElementById('m-song-artist');
+  if (titleEl) titleEl.textContent = song.title;
+  if (artistEl) artistEl.textContent = song.artist;
+
+  // stop audio when card changes
+  const mAudio = document.getElementById('m-audio');
+  if (mAudio) { mAudio.pause(); mAudio.src = ''; }
+  const mAudioWrap = document.getElementById('m-audio-wrap');
+  if (mAudioWrap) mAudioWrap.style.display = 'none';
+  const playBtn = document.getElementById('m-play-btn');
+  if (playBtn) playBtn.textContent = '▶ 再生';
+}
+
+function mAssign(tier) {
+  mRebuildUnranked();
+  if (mUnranked.length === 0) return;
+  const song = mUnranked[mIdx] || mUnranked[0];
+  if (!song) return;
+
+  for (const t of TIER_NAMES) tiers[t] = tiers[t].filter(i => i !== song.id);
+  tiers[tier].push(song.id);
+  save();
+
+  // flash feedback on button
+  const btns = document.querySelectorAll('.m-tier-btn');
+  btns.forEach(b => { if (b.textContent === tier) { b.style.transform = 'scale(1.2)'; setTimeout(() => b.style.transform = '', 180); }});
+
+  mRebuildUnranked();
+  if (mIdx >= mUnranked.length) mIdx = 0;
+  mUpdateCard();
+
+  if (document.getElementById('tier-area').innerHTML) renderTiers();
+}
+
+function mSkip() {
+  mRebuildUnranked();
+  if (mUnranked.length === 0) return;
+  mIdx = (mIdx + 1) % mUnranked.length;
+  mUpdateCard();
+}
+
+async function mPlayCurrent() {
+  mRebuildUnranked();
+  if (mUnranked.length === 0) return;
+  const song = mUnranked[mIdx] || mUnranked[0];
+  if (!song) return;
+
+  const mAudio = document.getElementById('m-audio');
+  const mAudioWrap = document.getElementById('m-audio-wrap');
+  const playBtn = document.getElementById('m-play-btn');
+
+  if (mAudioWrap.style.display !== 'none' && mAudio.src) {
+    mAudio.pause(); mAudio.src = '';
+    mAudioWrap.style.display = 'none';
+    if (playBtn) playBtn.textContent = '▶ 再生';
+    return;
+  }
+  if (playBtn) playBtn.textContent = '⏸ 停止';
+  mAudioWrap.style.display = 'block';
+  mAudio.src = `${BASE}/api/audio/${song.id}`;
+  mAudio.play().catch(() => {});
+}
+
+function showMobileTable() {
+  renderMobileTable();
+  document.getElementById('mobile-table').classList.add('open');
+}
+
+function hideMobileTable() {
+  document.getElementById('mobile-table').classList.remove('open');
+  mUpdateCard();
+}
+
+function renderMobileTable() {
+  const content = document.getElementById('m-table-content');
+  if (!content) return;
+  const total = Object.keys(songs).length;
+  const r = ranked().size;
+  const countEl = document.getElementById('m-table-count');
+  if (countEl) countEl.textContent = `${r} / ${total}曲`;
+
+  content.innerHTML = '';
+
+  for (const name of TIER_NAMES) {
+    const ids = tiers[name] || [];
+    const col = tierColors[name] || DEFAULT_COLORS[name];
+    const sec = document.createElement('div');
+    sec.className = 'm-tier-section';
+    const hdr = document.createElement('div');
+    hdr.className = 'm-tier-section-hdr';
+    hdr.innerHTML = `<div class="m-tier-lbl" style="background:${col};color:${(col==='#ffcc00'||col==='#ffd700')?'#222':'white'}">${name}</div><span class="m-tier-count">${ids.length}曲</span>`;
+    sec.appendChild(hdr);
+
+    const wrap = document.createElement('div');
+    wrap.className = 'm-tier-songs';
+    if (ids.length === 0) {
+      wrap.innerHTML = '<span style="font-size:11px;color:var(--text3);padding:4px 6px">なし</span>';
+    } else {
+      for (const id of ids) {
+        const song = songs[id];
+        if (!song) continue;
+        const chip = document.createElement('div');
+        chip.className = 'm-song-chip';
+        chip.innerHTML = `<img src="${song.thumbnail}" alt=""><span class="m-chip-name">${esc(song.title)}</span><span class="m-chip-x">✕</span>`;
+        chip.querySelector('.m-chip-x').addEventListener('click', e => {
+          e.stopPropagation();
+          for (const t of TIER_NAMES) tiers[t] = tiers[t].filter(i => i !== id);
+          save(); renderMobileTable(); mIdx = 0;
+        });
+        chip.addEventListener('click', () => openMobileReassign(id));
+        wrap.appendChild(chip);
+      }
+    }
+    sec.appendChild(wrap);
+    content.appendChild(sec);
+  }
+
+  // unranked count note
+  mRebuildUnranked();
+  if (mUnranked.length > 0) {
+    const note = document.createElement('div');
+    note.className = 'm-unranked-note';
+    note.textContent = `未ランク: ${mUnranked.length}曲`;
+    content.appendChild(note);
+  }
+}
+
+function openMobileReassign(id) {
+  const song = songs[id];
+  if (!song) return;
+  mReassignId = id;
+
+  const titleEl = document.getElementById('m-reassign-title');
+  if (titleEl) titleEl.textContent = song.title;
+
+  const btnsEl = document.getElementById('m-reassign-btns');
+  if (!btnsEl) return;
+  btnsEl.innerHTML = '';
+  for (const name of TIER_NAMES) {
+    const btn = document.createElement('button');
+    btn.className = 'm-reassign-btn';
+    btn.textContent = name;
+    const col = tierColors[name] || DEFAULT_COLORS[name];
+    btn.style.background = col;
+    btn.style.color = (col === '#ffcc00' || col === '#ffd700') ? '#222' : 'white';
+    btn.addEventListener('click', () => {
+      for (const t of TIER_NAMES) tiers[t] = tiers[t].filter(i => i !== mReassignId);
+      tiers[name].push(mReassignId);
+      save(); renderMobileTable(); closeMobileReassign();
+    });
+    btnsEl.appendChild(btn);
+  }
+  document.getElementById('mobile-reassign').classList.add('open');
+}
+
+function closeMobileReassign() {
+  document.getElementById('mobile-reassign').classList.remove('open');
+  mReassignId = null;
+}
+
+document.addEventListener('click', e => {
+  if (e.target === document.getElementById('mobile-reassign')) closeMobileReassign();
+});
 
 // ── UTILS ──
 function showApp() {
   document.getElementById('setup').style.display = 'none';
   document.getElementById('app').style.display = 'flex';
+  setTimeout(() => { mUpdateCard(); renderMobileTierBtns(); }, 0);
 }
 function showLoad(msg) { document.getElementById('loading').style.display = 'flex'; document.getElementById('load-txt').textContent = msg; }
 function hideLoad() { document.getElementById('loading').style.display = 'none'; }
